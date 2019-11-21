@@ -1,68 +1,66 @@
-// l1.cpp: определяет точку входа для приложения.
+// l1.cpp: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 //
 
 #include "stdafx.h"
 #include "l1.h"
+#include <windows.h>
+#include <ctime>
 
 #define MAX_LOADSTRING 100
+HWND win;
 
-// Глобальные переменные:
-HINSTANCE hInst;								// текущий экземпляр
-TCHAR szTitle[MAX_LOADSTRING];					// Текст строки заголовка
-TCHAR szWindowClass[MAX_LOADSTRING];			// имя класса главного окна
-TCHAR szWindowClass1[MAX_LOADSTRING];			// имя класса второго окна
-TCHAR szWindowClass2[MAX_LOADSTRING];			// имя класса третьего окна
-TCHAR szWindowClass3[MAX_LOADSTRING];			// имя класса четвертого окна
-TCHAR szWindowClass4[MAX_LOADSTRING];			// имя класса четвертого окна
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
+HINSTANCE hInst;								// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+TCHAR szTitle[MAX_LOADSTRING];					// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+TCHAR szWindowClass[MAX_LOADSTRING];			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+TCHAR szWindowClass1[MAX_LOADSTRING];			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+TCHAR szWindowClass2[MAX_LOADSTRING];			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
-// Отправить объявления функций, включенных в этот модуль кода:
+
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 ATOM				MyRegisterClass1(HINSTANCE hInstance);
 ATOM				MyRegisterClass2(HINSTANCE hInstance);
-ATOM				MyRegisterClass3(HINSTANCE hInstance);
-ATOM				MyRegisterClass4(HINSTANCE hInstance);
+
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK	WndProc1(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK	WndProc2(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK	WndProc3(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK	WndProc4(HWND, UINT, WPARAM, LPARAM);
+
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
-                     HINSTANCE hPrevInstance,
-                     LPTSTR    lpCmdLine,
-                     int       nCmdShow)
+	HINSTANCE hPrevInstance,
+	LPTSTR    lpCmdLine,
+	int       nCmdShow)
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
- 	// TODO: разместите код здесь.
+	// TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 	MSG msg;
 	HACCEL hAccelTable;
 
-	// Инициализация глобальных строк
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadString(hInstance, IDC_L1, szWindowClass, MAX_LOADSTRING);
 	LoadString(hInstance, IDS_STRING104, szWindowClass1, MAX_LOADSTRING);
 	LoadString(hInstance, IDS_STRING105, szWindowClass2, MAX_LOADSTRING);
-	LoadString(hInstance, IDS_STRING106, szWindowClass3, MAX_LOADSTRING);
-	LoadString(hInstance, IDS_STRING107, szWindowClass4, MAX_LOADSTRING);
+
 	MyRegisterClass(hInstance);
 	MyRegisterClass1(hInstance);
 	MyRegisterClass2(hInstance);
-	MyRegisterClass3(hInstance);
-	MyRegisterClass4(hInstance);
 
-	// Выполнить инициализацию приложения:
-	if (!InitInstance (hInstance, nCmdShow))
+
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
+	if (!InitInstance(hInstance, nCmdShow))
 	{
 		return FALSE;
 	}
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_L1));
 
-	// Цикл основного сообщения:
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -72,23 +70,23 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		}
 	}
 
-	return (int) msg.wParam;
+	return (int)msg.wParam;
 }
 
 
 
 //
-//  ФУНКЦИЯ: MyRegisterClass()
+//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MyRegisterClass()
 //
-//  НАЗНАЧЕНИЕ: регистрирует класс окна.
+//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
 //
-//  КОММЕНТАРИИ:
+//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
 //
-//    Эта функция и ее использование необходимы только в случае, если нужно, чтобы данный код
-//    был совместим с системами Win32, не имеющими функции RegisterClassEx'
-//    которая была добавлена в Windows 95. Вызов этой функции важен для того,
-//    чтобы приложение получило "качественные" мелкие значки и установило связь
-//    с ними.
+//    пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+//    пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Win32, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ RegisterClassEx'
+//    пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Windows 95. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ,
+//    пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+//    пїЅ пїЅпїЅпїЅпїЅ.
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
@@ -96,17 +94,17 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
-	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= WndProc;
-	wcex.cbClsExtra		= 0;
-	wcex.cbWndExtra		= 0;
-	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
-	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= CreateSolidBrush(RGB(110,166,94));
-	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_L1);
-	wcex.lpszClassName	= szWindowClass;
-	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcex.hbrBackground = CreateSolidBrush(RGB(110, 166, 94));
+	wcex.lpszMenuName = MAKEINTRESOURCE(IDC_L1);
+	wcex.lpszClassName = szWindowClass;
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
 	return RegisterClassEx(&wcex);
 }
@@ -116,17 +114,17 @@ ATOM MyRegisterClass1(HINSTANCE hInstance)
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
-	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= WndProc1;
-	wcex.cbClsExtra		= 0;
-	wcex.cbWndExtra		= 0;
-	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
-	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= CreateSolidBrush(RGB(255,255,0));
-	wcex.lpszMenuName	= NULL;
-	wcex.lpszClassName	= szWindowClass1;
-	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc1;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcex.hbrBackground = CreateSolidBrush(RGB(255, 255, 0));
+	wcex.lpszMenuName = NULL;
+	wcex.lpszClassName = szWindowClass1;
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
 	return RegisterClassEx(&wcex);
 }
@@ -137,165 +135,102 @@ ATOM MyRegisterClass2(HINSTANCE hInstance)
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
-	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= WndProc2;
-	wcex.cbClsExtra		= 0;
-	wcex.cbWndExtra		= 0;
-	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
-	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= CreateSolidBrush(RGB(54,242,2));
-	wcex.lpszMenuName	= NULL;
-	wcex.lpszClassName	= szWindowClass2;
-	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc2;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcex.hbrBackground = CreateSolidBrush(RGB(128, 128, 128));
+	wcex.lpszMenuName = NULL;
+	wcex.lpszClassName = szWindowClass2;
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
 	return RegisterClassEx(&wcex);
 }
 
-ATOM MyRegisterClass3(HINSTANCE hInstance)
-{
-	WNDCLASSEX wcex;
 
-	wcex.cbSize = sizeof(WNDCLASSEX);
-
-	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= WndProc3;
-	wcex.cbClsExtra		= 0;
-	wcex.cbWndExtra		= 0;
-	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
-	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= CreateSolidBrush(RGB(242,118,2));
-	wcex.lpszMenuName	= NULL;
-	wcex.lpszClassName	= szWindowClass3;
-	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
-
-	return RegisterClassEx(&wcex);
-}
-
-ATOM MyRegisterClass4(HINSTANCE hInstance)
-{
-	WNDCLASSEX wcex;
-
-	wcex.cbSize = sizeof(WNDCLASSEX);
-
-	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= WndProc4;
-	wcex.cbClsExtra		= 0;
-	wcex.cbWndExtra		= 0;
-	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_L1));
-	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= CreateSolidBrush(RGB(66,116,235));
-	wcex.lpszMenuName	= NULL;
-	wcex.lpszClassName	= szWindowClass4;
-	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
-
-	return RegisterClassEx(&wcex);
-}
 
 //
-//   ФУНКЦИЯ: InitInstance(HINSTANCE, int)
+//   пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: InitInstance(HINSTANCE, int)
 //
-//   НАЗНАЧЕНИЕ: сохраняет обработку экземпляра и создает главное окно.
+//   пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
 //
-//   КОММЕНТАРИИ:
+//   пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:
 //
-//        В данной функции дескриптор экземпляра сохраняется в глобальной переменной, а также
-//        создается и выводится на экран главное окно программы.
+//        пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅ
+//        пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   HWND hWnd,hWnd1,hWnd2,hWnd3,hWnd4;
+	HWND hWnd, hWnd1, hWnd2, hWnd3, hWnd4;
 
-   hInst = hInstance; // Сохранить дескриптор экземпляра в глобальной переменной
+	hInst = hInstance; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-   hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, 1920, 1080, NULL, NULL, hInstance, NULL);
+	hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, 0, 1920, 1080, NULL, NULL, hInstance, NULL);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
-
-
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
-
-   hWnd1 = CreateWindow(szWindowClass1, szTitle, WS_CHILD | WS_BORDER | WS_CAPTION | WS_SYSMENU,
-	   950, 0, 700, 800, hWnd, (HMENU)(int)(1), hInstance, NULL);
-
-   if (!hWnd1)
-   {
-	   return FALSE;
-   }
-
-   ShowWindow(hWnd1, nCmdShow);
-   UpdateWindow(hWnd1);
-
-   hWnd2 = CreateWindow(szWindowClass2, szTitle, WS_CHILD | WS_CAPTION | WS_SYSMENU,
-      900, 400, 700, 400, hWnd, (HMENU)(int)(101), hInstance, NULL);
-
-   if (!hWnd2)
-   {
-      return FALSE;
-   }
-
-   ShowWindow(hWnd2, nCmdShow);
-   UpdateWindow(hWnd2);
-
-   hWnd3 = CreateWindow(szWindowClass3, szTitle,  WS_CHILD | WS_CAPTION | WS_SYSMENU,
-	   100, 100, 650, 850, hWnd, (HMENU)(int)(100), hInstance, NULL);
-
-   if (!hWnd3)
-   {
-	   return FALSE;
-   }
-
-   ShowWindow(hWnd3, nCmdShow);
-   UpdateWindow(hWnd3);
+	if (!hWnd)
+	{
+		return FALSE;
+	}
+	win = hWnd;
 
 
-   hWnd4 = CreateWindow(szWindowClass4, szTitle, WS_CHILD | WS_CAPTION | WS_SYSMENU,
-     200, 600, 400, 300, hWnd, NULL, hInstance, NULL);
+	ShowWindow(hWnd, nCmdShow);
+	UpdateWindow(hWnd);
 
-   if (!hWnd4)
-   {
-      return FALSE;
-   }
+	hWnd1 = CreateWindow(szWindowClass1, szTitle, WS_CHILD | WS_BORDER | WS_CAPTION | WS_SYSMENU,
+		950, 0, 700, 800, hWnd, (HMENU)(int)(1), hInstance, NULL);
 
-   ShowWindow(hWnd4, nCmdShow);
-   UpdateWindow(hWnd4); 
+	if (!hWnd1)
+	{
+		return FALSE;
+	}
 
+	ShowWindow(hWnd1, nCmdShow);
+	UpdateWindow(hWnd1);
 
+	hWnd2 = CreateWindow(szWindowClass2, szTitle, WS_CHILD | WS_CAPTION | WS_SYSMENU,
+		400, 400, 400, 200, hWnd1, (HMENU)(int)(101), hInstance, NULL);
 
-       
+	if (!hWnd2)
+	{
+		return FALSE;
+	}
 
-   return TRUE;
+	ShowWindow(hWnd2, nCmdShow);
+	UpdateWindow(hWnd2);
+	return TRUE;
 }
 
+
+
 //
-//  ФУНКЦИЯ: WndProc(HWND, UINT, WPARAM, LPARAM)
+//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
-//  НАЗНАЧЕНИЕ:  обрабатывает сообщения в главном окне.
+//  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
 //
-//  WM_COMMAND	- обработка меню приложения
-//  WM_PAINT	-Закрасить главное окно
-//  WM_DESTROY	 - ввести сообщение о выходе и вернуться.
+//  WM_COMMAND	- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//  WM_PAINT	-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+//  WM_DESTROY	 - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 //
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	WNDCLASSEX wcex;
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
-
+	wcex.hbrBackground = CreateSolidBrush(RGB(110, 166, 94));
 	switch (message)
 	{
 	case WM_COMMAND:
-		wmId    = LOWORD(wParam);
+		wmId = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
-		// Разобрать выбор в меню:
+		wcex.hbrBackground = CreateSolidBrush(RGB(rand, rand, rand));
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ:
 		switch (wmId)
 		{
 		case IDM_ABOUT:
@@ -305,12 +240,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			DestroyWindow(hWnd);
 			break;
 		default:
-			return DefWindowProc(hWnd, message, wParam, lParam);
+			return 	DefWindowProc(hWnd, message, wParam, lParam);
 		}
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// TODO: добавьте любой код отрисовки...
+		// TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
@@ -324,6 +259,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 LRESULT CALLBACK WndProc1(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	WNDCLASSEX wcex;
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
@@ -331,16 +267,16 @@ LRESULT CALLBACK WndProc1(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	switch (message)
 	{
 	case WM_COMMAND:
-		wmId    = LOWORD(wParam);
+		wmId = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
-		// Разобрать выбор в меню:
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ:
 		switch (wmId)
 		{
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
 		case IDM_EXIT:
-			DestroyWindow(hWnd);
+			//DestroyWindow(hWnd);
 			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
@@ -348,11 +284,14 @@ LRESULT CALLBACK WndProc1(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// TODO: добавьте любой код отрисовки...
+		// TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
 		//PostQuitMessage(0);
+		srand(time(0));
+		SetClassLongPtr(win, GCLP_HBRBACKGROUND, LONG(CreateSolidBrush(RGB(rand() % 256, rand() % 256, rand() % 256))));
+		InvalidateRect(win, NULL, TRUE);
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
@@ -370,16 +309,17 @@ LRESULT CALLBACK WndProc2(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	switch (message)
 	{
 	case WM_COMMAND:
-		wmId    = LOWORD(wParam);
+		wmId = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
-		// Разобрать выбор в меню:
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ:
 		switch (wmId)
 		{
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
 		case IDM_EXIT:
-			DestroyWindow(hWnd);
+
+			//DestroyWindow(hWnd);			
 			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
@@ -387,7 +327,7 @@ LRESULT CALLBACK WndProc2(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// TODO: добавьте любой код отрисовки...
+		// TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
@@ -401,83 +341,9 @@ LRESULT CALLBACK WndProc2(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 
 
-LRESULT CALLBACK WndProc3(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-	int wmId, wmEvent;
-	PAINTSTRUCT ps;
-	HDC hdc;
 
-	switch (message)
-	{
-	case WM_COMMAND:
-		wmId    = LOWORD(wParam);
-		wmEvent = HIWORD(wParam);
-		// Разобрать выбор в меню:
-		switch (wmId)
-		{
-		case IDM_ABOUT:
-			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-			break;
-		case IDM_EXIT:
-			DestroyWindow(hWnd);
-			break;
-		default:
-			return DefWindowProc(hWnd, message, wParam, lParam);
-		}
-		break;
-	case WM_PAINT:
-		hdc = BeginPaint(hWnd, &ps);
-		// TODO: добавьте любой код отрисовки...
-		EndPaint(hWnd, &ps);
-		break;
-	case WM_DESTROY:
-		//PostQuitMessage(0);
-		break;
-	default:
-		return DefWindowProc(hWnd, message, wParam, lParam);
-	}
-	return 0;
-}
 
-LRESULT CALLBACK WndProc4(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-	int wmId, wmEvent;
-	PAINTSTRUCT ps;
-	HDC hdc;
-
-	switch (message)
-	{
-	case WM_COMMAND:
-		wmId    = LOWORD(wParam);
-		wmEvent = HIWORD(wParam);
-		// Разобрать выбор в меню:
-		switch (wmId)
-		{
-		case IDM_ABOUT:
-			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-			break;
-		case IDM_EXIT:
-			DestroyWindow(hWnd);
-			break;
-		default:
-			return DefWindowProc(hWnd, message, wParam, lParam);
-		}
-		break;
-	case WM_PAINT:
-		hdc = BeginPaint(hWnd, &ps);
-		// TODO: добавьте любой код отрисовки...
-		EndPaint(hWnd, &ps);
-		break;
-	case WM_DESTROY:
-		PostQuitMessage(0);
-		break;
-	default:
-		return DefWindowProc(hWnd, message, wParam, lParam);
-	}
-	return 0;
-}
-
-// Обработчик сообщений для окна "О программе".
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ "пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ".
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	UNREFERENCED_PARAMETER(lParam);

@@ -1,2 +1,7 @@
 ﻿  l1.cpp
-  l1.vcxproj -> D:\Documents\BNTU\3 курс\5 семестр\Разорёнов\лабы Разор\Разор\SP_1\Debug\l1.exe
+d:\stady\3 course\5 term\ossp\operating-systems-and-system-programming\lab01\l1\l1.cpp(167): warning C4101: 'hWnd3': unreferenced local variable
+d:\stady\3 course\5 term\ossp\operating-systems-and-system-programming\lab01\l1\l1.cpp(167): warning C4101: 'hWnd4': unreferenced local variable
+d:\stady\3 course\5 term\ossp\operating-systems-and-system-programming\lab01\l1\l1.cpp(232): warning C4302: 'type cast': truncation from 'int (__cdecl *)(void)' to 'BYTE'
+d:\stady\3 course\5 term\ossp\operating-systems-and-system-programming\lab01\l1\l1.cpp(292): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\stady\3 course\5 term\ossp\operating-systems-and-system-programming\lab01\l1\l1.cpp(262): warning C4101: 'wcex': unreferenced local variable
+  l1.vcxproj -> D:\Stady\3 course\5 term\OSSP\Operating-systems-and-system-programming\lab01\Debug\l1.exe
